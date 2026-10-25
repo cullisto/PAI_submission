@@ -33,12 +33,7 @@ PAI2026_応用Ⅰ 最終課題のコード一式。
 |---|---|
 | `src_ext/` | 歩行方策の学習・確認（`go2_env.py`、`go2_train.py`、`go2_eval.py`）と学習済みモデル（`logs/go2-omni/model_500.pt` など） |
 | `cap_go2/` | Code as Policies の本体。ロボットの API、シーン、タスクと自動判定、プロンプト、実行・記録、自動評価、集計。詳しくは [`cap_go2/README.md`](cap_go2/README.md) |
-| `cap_go2/runs/` | claude.ai での全試行の記録（プロンプト、応答、実行したコード、動画、軌跡、判定） |
-| `cap_go2/runs_auto/` | Qwen3-4B での全試行の記録（Colab で実行したため動画なし） |
 | `cap_go2/results_v2.csv`、`cap_go2/results_qwen-qwen3-4b-instruct-2507_v2.csv` | 全試行の結果の一覧（v2 はロボットの大きさをプロンプトに書いた版。レポートの結果はすべて v2） |
-| `report_tools/`、`report_assets/` | 学習曲線の図と、結果の集計表 |
-| `movie_build/` | デモ動画の組み立て（Qwen の試行を手元で実行し直して録画する `replay_qwen.py`、動画を組み立てる `make_movie.py`） |
-| `movie/` | デモ動画のオープニング・エンディング |
 
 ## 環境構築
 
@@ -47,7 +42,7 @@ PAI2026_応用Ⅰ 最終課題のコード一式。
 | 用途 | 環境 |
 |---|---|
 | 歩行方策の学習、Qwen3-4B による自動評価 | Google Colab（T4 GPU）、Genesis 1.4.4、rsl_rl v1.0.2 |
-| 学習結果の確認、CaP の実行、動画の作成 | Windows 11（GPU なし、CPU で実行）、Python 3.11、Genesis 1.4.4、rsl_rl v1.0.2 |
+| 学習結果の確認、CaP の実行 | Windows 11（GPU なし、CPU で実行）、Python 3.11、Genesis 1.4.4、rsl_rl v1.0.2 |
 
 手元の環境は [uv](https://docs.astral.sh/uv/) で作る。Genesis と rsl_rl は、このリポジトリの直下に置く（`.gitignore` で除外している）。
 
@@ -61,8 +56,8 @@ uv pip install torch --index-url https://download.pytorch.org/whl/cpu
 # rsl_rl v1.0.2（依存関係は入れない。CPU 版の torch が置き換えられるのを防ぐため）
 git clone -b v1.0.2 https://github.com/leggedrobotics/rsl_rl.git ../rsl_rl
 uv pip install --no-deps -e ../rsl_rl
-# CaP の実行・集計・動画の作成に使うもの
-uv pip install matplotlib tensorboard moviepy
+# rsl_rl が読み込み時に使う tensorboard と、軌跡の図に使う matplotlib
+uv pip install tensorboard matplotlib
 cd ..
 ```
 

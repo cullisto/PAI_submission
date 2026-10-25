@@ -1,5 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  2.00s] エラー:   生成コードの 12 行目: turn_to(bx - x, by - y)  # 向きを調整（atan2で方向を計算）
-TypeError: RobotAPI.turn_to() takes 2 positional arguments but 3 were given

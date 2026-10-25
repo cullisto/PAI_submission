@@ -1,8 +1,0 @@
-{
-  "run_id": "20261023-220742_H01",
-  "task_id": "H01",
-  "instruction": "青い箱の裏側（スタート地点から見て反対側）に回り込んで、青い箱の方を向いて止まって。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai"
-}

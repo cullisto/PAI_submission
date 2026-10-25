@@ -1,7 +1,0 @@
-{
-  "prompt_tokens": 1713,
-  "completion_tokens": 4096,
-  "seconds": 531.2,
-  "seed": 1,
-  "is_truncated": true
-}

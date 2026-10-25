@@ -1,9 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t=  2.90s] move_forward(1.0)
-[t=  5.10s] turn(-90)
-[t=  7.00s] move_forward(1.0)
-[t=  9.10s] turn(-90)
-[t= 11.00s] move_forward(1.0)
-[t= 13.10s] turn(-90)
-[t= 15.00s] move_forward(1.0)
-[t= 16.00s] stop(1.0)

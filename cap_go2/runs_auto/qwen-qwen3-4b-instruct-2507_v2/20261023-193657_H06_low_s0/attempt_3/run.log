@@ -1,2 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  2.00s] エラー: SyntaxError: expected an indented block after 'else' statement on line 28（33 行目）

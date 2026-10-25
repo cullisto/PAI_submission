@@ -1,8 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t= 11.90s] print: 青い箱に近づいた: True
-[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
-[t= 11.90s] move_to(2.0, 2.0, tolerance=0.5) -> True
-[t= 11.90s] get_position() -> (1.756, 1.562)
-[t= 42.20s] move_to(1.65, 2.0, tolerance=0.3) -> False
-[t= 43.90s] face(2.0, 2.0)
-[t= 44.90s] stop(1.0)

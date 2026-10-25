@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-032155_T07",
-  "task_id": "T07",
-  "instruction": "1メートル後ろに下がってから、右を向いて。",
-  "scene": "basic",
-  "api_level": "low",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

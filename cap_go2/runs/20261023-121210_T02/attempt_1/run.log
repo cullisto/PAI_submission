@@ -1,5 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  3.10s] print: 現在の向き: 88.6
-[t=  3.10s] turn(90)
-[t=  3.10s] get_yaw() -> 88.6
-[t=  3.60s] stop(0.5)

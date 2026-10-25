@@ -1,7 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t=  1.00s] get_object_position('red_box') -> (4.0, 0.0)
-[t=  1.00s] get_object_position('wall') -> (2.0, 0.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  1.00s] get_yaw() -> 0.8
-[t=  2.00s] エラー:   生成コードの 16 行目: wall_left = wall_x - wall_size_x / 2
-NameError: name 'wall_size_x' is not defined

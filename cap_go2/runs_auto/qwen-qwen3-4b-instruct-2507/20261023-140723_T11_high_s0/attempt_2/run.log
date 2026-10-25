@@ -1,5 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t=  1.00s] get_object_position('red_box') -> (4.0, 0.0)
-[t=  1.00s] get_object_position('wall') -> (2.0, 0.0)
-[t=  2.00s] エラー:   生成コードの 10 行目: wall_size_x, wall_size_y = wall_info[2], wall_info[3]  # x方向とy方向の大きさ
-IndexError: tuple index out of range

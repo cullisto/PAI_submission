@@ -1,9 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  4.60s] print: 青い箱に到着: True
-[t= 11.90s] print: 緑の箱に到着: True
-[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  4.60s] move_to(1.7523273122685121, 1.7526980797651162, tolerance=0.3) -> True
-[t=  4.60s] get_object_position('green_box') -> (0.5, -2.5)
-[t= 11.90s] move_to(0.43080499511850845, -2.156908100795938, tolerance=0.3) -> True
-[t= 12.90s] stop(1.0)

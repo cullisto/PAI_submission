@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-025431_H07",
-  "task_id": "H07",
-  "instruction": "向きを変えずに（その場での旋回もせずに）、前後の移動と横歩きだけで青い箱の手前まで行って。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

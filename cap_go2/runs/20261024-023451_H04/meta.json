@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-023451_H04",
-  "task_id": "H04",
-  "instruction": "赤い箱まで行って。",
-  "scene": "maze",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

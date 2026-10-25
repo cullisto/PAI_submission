@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-010646_T04",
-  "task_id": "T04",
-  "instruction": "青い箱に寄ってから、緑の箱まで行って。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

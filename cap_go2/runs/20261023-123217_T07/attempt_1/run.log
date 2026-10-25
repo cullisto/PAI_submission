@@ -1,8 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  3.20s] print: 後退後の位置: (-0.966, -0.025)
-[t=  5.30s] print: 旋回後の向き: -86.5
-[t=  3.20s] move_forward(-1.0)
-[t=  3.20s] get_position() -> (-0.966, -0.025)
-[t=  5.30s] turn(-90)
-[t=  5.30s] get_yaw() -> -86.5
-[t=  5.80s] stop(0.5)

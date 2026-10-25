@@ -1,8 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t= 10.20s] print: 目標位置に到達: True
-[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  1.00s] get_yaw() -> 0.8
-[t=  4.70s] turn_to(180.0)
-[t= 10.20s] move_to(2.0000000554076984, -0.0003328894622477701, tolerance=0.15) -> True
-[t= 12.20s] stop(2.0)

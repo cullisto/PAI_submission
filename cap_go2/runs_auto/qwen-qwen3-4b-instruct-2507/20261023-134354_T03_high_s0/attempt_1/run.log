@@ -1,6 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t= 31.40s] print: 赤い箱への移動結果: False
-[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  1.00s] get_yaw() -> 0.8
-[t= 31.40s] move_to(3.0, 0.0, tolerance=0.3) -> False

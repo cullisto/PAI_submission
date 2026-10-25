@@ -1,5 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  1.00s] get_yaw() -> 0.8
-[t=  2.00s] エラー:   生成コードの 14 行目: for angle in range(0, total_angle + 1, angle_step):
-TypeError: 'float' object cannot be interpreted as an integer

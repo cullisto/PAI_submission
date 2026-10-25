@@ -1,8 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  5.30s] print: 安全距離を確保して目標へ到達: True
-[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  1.00s] get_yaw() -> 0.8
-[t=  1.30s] face(3.0, 0.0)
-[t=  5.30s] move_to(2.6500000193926945, -0.00011651131178671951, tolerance=0.15) -> True
-[t=  6.30s] stop(1.0)

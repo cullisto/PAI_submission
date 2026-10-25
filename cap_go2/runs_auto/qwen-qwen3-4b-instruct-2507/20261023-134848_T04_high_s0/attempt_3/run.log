@@ -1,8 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
-[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
-[t=  1.00s] get_position() -> (-0.004, -0.001)
-[t=  2.40s] turn_to(44.9570818211259)
-[t=  2.40s] get_position() -> (0.009, -0.032)
-[t=  3.70s] move_forward(0.5)
-[t=  4.70s] エラー:   生成コードの 33 行目: time.sleep(1.0)
-NameError: name 'time' is not defined

@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-022354_T08",
-  "task_id": "T08",
-  "instruction": "赤い箱と青い箱のちょうど中間の地点に移動して。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

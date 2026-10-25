@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-010916_T05",
-  "task_id": "T05",
-  "instruction": "1辺1メートルの正方形を描くように歩いて、元の場所に戻って。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

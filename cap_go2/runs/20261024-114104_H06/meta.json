@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-114104_H06",
-  "task_id": "H06",
-  "instruction": "赤い箱にお尻を向けて、箱から1メートル離れた位置で止まって。",
-  "scene": "basic",
-  "api_level": "low",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

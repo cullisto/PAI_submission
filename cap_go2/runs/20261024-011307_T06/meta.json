@@ -1,9 +1,0 @@
-{
-  "run_id": "20261024-011307_T06",
-  "task_id": "T06",
-  "instruction": "一番近い箱まで行って。",
-  "scene": "basic",
-  "api_level": "high",
-  "model": "claude.ai",
-  "prompt_version": "v2"
-}

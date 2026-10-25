@@ -1,4 +1,0 @@
-[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
-[t=  3.20s] move_forward(-1.0)
-[t=  5.30s] turn(-90)
-[t= 10.30s] stop(5.0)

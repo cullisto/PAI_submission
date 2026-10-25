@@ -7,6 +7,12 @@ genesis-world/
 rsl_rl/
 
 # 生成物・キャッシュ
+runs/
+runs_auto/
+report_assets/
+report_tools/
+movie_build/
+movie/
 __pycache__/
 *.pyc
 .venv/

@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "red_box までの最終距離 0.56 m（基準 < 0.7 m）、障害物との最小距離 0.68 m（基準 > 0.25 m、これ以下は衝突）",
+  "error": "",
+  "final_state": {
+    "x": 3.6446518898010254,
+    "y": -0.43099093437194824,
+    "yaw_deg": 53.66547076926833
+  },
+  "sim_time_s": 12.2,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱（ゴール）', 'x': 4.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'wall', 'description': '灰色の壁（障害物）', 'x': 2.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 1.6, 'is_obstacle': True}]",
+    "[t=  1.00s] get_object_position('red_box') -> (4.0, 0.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  4.30s] move_to(1.2000000000000002, -1.4, tolerance=0.15, timeout=25.0) -> True",
+    "[t=  4.30s] get_position() -> (1.133, -1.318)",
+    "[t=  7.40s] move_to(2.8, -1.4, tolerance=0.15, timeout=25.0) -> True",
+    "[t=  7.40s] get_position() -> (2.704, -1.429)",
+    "[t=  8.60s] face(4.0, 0.0)",
+    "[t=  8.60s] get_position() -> (2.704, -1.456)",
+    "[t= 11.20s] move_to(3.700807075376565, -0.33613032272509363, tolerance=0.15, timeout=25.0) -> True",
+    "[t= 11.70s] face(4.0, 0.0)",
+    "[t= 12.20s] stop(0.5)",
+    "[t= 12.20s] get_position() -> (3.641, -0.431)",
+    "[t= 12.20s] distance_to(4.0, 0.0) -> 0.561"
+  ],
+  "log_tail": [
+    "[t=  4.30s] print: 経由点 1 (1.2, -1.4) 到着: True 現在位置: (1.133, -1.318)",
+    "[t=  7.40s] print: 経由点 2 (2.8, -1.4) 到着: True 現在位置: (2.704, -1.429)",
+    "[t= 12.20s] print: 赤い箱に到着: True 位置: (3.641, -0.431) 箱までの距離: 0.56"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "90度からの誤差 4 deg（基準 < 15）、移動距離 0.05 m（基準 < 0.4）",
+  "error": "",
+  "final_state": {
+    "x": 0.01976408250629902,
+    "y": -0.03991640731692314,
+    "yaw_deg": 87.0898864777799
+  },
+  "sim_time_s": 3.6,
+  "stall_time_s": 0.0,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  3.10s] turn(90)",
+    "[t=  3.60s] stop(0.5)"
+  ],
+  "log_tail": []
+}

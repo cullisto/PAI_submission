@@ -1,0 +1,8 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t= 32.70s] print: 赤い箱へ到達しました
+[t=  1.00s] get_object_position('red_box') -> (4.2, 0.0)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_object_position('wall_back') -> (3.0, 0.0)
+[t= 19.60s] move_forward(2.65)
+[t= 32.70s] move_forward(1.5540000000000003)
+[t= 33.70s] stop(1.0)

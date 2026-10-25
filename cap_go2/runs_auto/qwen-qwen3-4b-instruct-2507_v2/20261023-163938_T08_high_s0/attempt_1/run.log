@@ -1,0 +1,6 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  4.70s] print: 中間点に到達: True
+[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  4.70s] move_to(2.5, 1.0, tolerance=0.3) -> True
+[t=  5.70s] stop(1.0)

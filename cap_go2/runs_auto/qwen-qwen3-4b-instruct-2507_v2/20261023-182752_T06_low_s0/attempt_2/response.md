@@ -1,0 +1,139 @@
+```python
+# 一番近い箱まで行って、物体にぶつからないように安全な距離で移動する
+# 前回の失敗から、ロボットが物体に近づくと当たってしまうことが判明
+# 修正点:
+# 1. ロボットのサイズを考慮し、物体の境界に近づかないように安全距離を確保
+# 2. 各箱の安全距離を計算し、その距離内に近づくように移動
+# 3. 旋回と移動を分離し、向きを正確に調整して物体にぶつからないようにする
+# 4. 毎ステップでロボットの位置と物体との距離を確認し、安全な範囲内で進む
+
+import math
+
+# 物体の情報（名前、中心座標、サイズ）
+objects = get_objects()
+# ロボットの現在の位置と向き
+x0, y0 = get_position()
+current_yaw = get_yaw()
+
+# 各物体の安全距離を計算（ロボットのサイズを考慮）
+# ロボットの前後方向（0.35m）と左右方向（0.15m）を考慮
+safe_margin = 0.35  # 前後方向の安全距離（胴体中心から物体の中心まで）
+
+# 各物体の安全距離を計算し、最も近い安全な物体を選び、その方向に進む
+min_safe_distance = float('inf')
+target_x, target_y = 0.0, 0.0
+closest_object = None
+
+for obj in objects:
+    obj_x, obj_y = obj["x"], obj["y"]
+    obj_size_x, obj_size_y = obj["size_x"], obj["size_y"]
+    
+    # ロボットの中心から物体の中心までの距離
+    dist = math.sqrt((obj_x - x0)**2 + (obj_y - y0)**2)
+    
+    # 物体の境界にロボットの胴体が入らないように、安全距離を確保
+    # 前後方向（x軸）では、ロボットの中心から物体の中心までの距離が安全距離（0.35m）より大きいこと
+    # 左右方向（y軸）では、0.15mより大きいこと
+    # しかし、物体のサイズが小さい場合は、安全距離を計算
+    # ここでは、物体の中心からロボットの中心までの距離が、安全距離（0.35m）より大きく、かつ物体のサイズを考慮
+    # ただし、物体のサイズが0.3×0.3なら、ロボットが正面から近づくと当たるため、安全距離は0.35m以上
+    
+    # 安全距離の計算（物体の中心からロボットの中心までの距離が安全距離より大きければOK）
+    # 安全距離は、物体のサイズとロボットのサイズを考慮
+    # 例: 物体が0.3×0.3なら、ロボットが正面から0.35m以内に近づくと当たる（0.35 + 0.15 = 0.5mの境界）
+    # つまり、安全距離は 0.35 + (obj_size_x / 2) などではなく、ロボットの前後方向の安全距離（0.35m）を基準に
+    # ここでは、物体の中心からロボットの中心までの距離が 0.35m 以上で、かつ物体のサイズが小さい場合に安全
+    # しかし、物体のサイズが小さい場合は、安全距離は 0.35m で十分（ロボットの前後方向に0.35mの余裕）
+    
+    # 安全距離の最小値は 0.35m（前後方向）
+    safe_dist = 0.35
+    
+    if dist >= safe_dist:
+        # まだ安全な距離にある
+        if dist < min_safe_distance:
+            min_safe_distance = dist
+            target_x, target_y = obj_x, obj_y
+            closest_object = obj
+
+# 安全な距離が見つからなかった場合（すべての物体が近すぎる）
+if closest_object is None:
+    stop(1.0)
+else:
+    # 目標位置に近づくまで移動
+    # 1. 旋回して目標方向に向けられるようにする
+    # 2. 前進しながら、物体に近づかないようにする
+    target_x, target_y = target_x, target_y
+    dx = target_x - x0
+    dy = target_y - y0
+    target_yaw = math.degrees(math.atan2(dy, dx))
+    
+    # ロボットの現在の向きと目標向きの差（-180〜180）
+    yaw_diff = target_yaw - current_yaw
+    while yaw_diff > 180:
+        yaw_diff -= 360
+    while yaw_diff < -180:
+        yaw_diff += 360
+    
+    # 移動ステップ（最大120秒で終了）
+    max_steps = 500
+    for step in range(max_steps):
+        # 現在の位置を確認
+        x, y = get_position()
+        current_dist = math.sqrt((x - target_x)**2 + (y - target_y)**2)
+        
+        # 安全距離に達したら終了（0.1m以内）
+        if current_dist < 0.1:
+            break
+            
+        # 旋回が必要か
+        if abs(yaw_diff) > 5.0:
+            # 旋回速度を調整（左回りが正）
+            rate = max(-1.0, min(1.0, 2.0 * math.radians(yaw_diff)))
+            if abs(rate) < 0.3:
+                rate = math.copysign(0.3, rate)
+            walk(0.0, 0.0, rate, duration=0.1)
+            current_yaw = get_yaw()
+            yaw_diff = target_yaw - current_yaw
+            while yaw_diff > 180:
+                yaw_diff -= 360
+            while yaw_diff < -180:
+                yaw_diff += 360
+        else:
+            # 向きが合っていれば、前進
+            walk(0.5, 0.0, 0.0, duration=0.1)
+        
+        # 安全距離を確認（物体に近づかないように）
+        # 各物体の境界を確認（ロボットの中心が物体の境界内に入らないように）
+        for obj in objects:
+            obj_x, obj_y = obj["x"], obj["y"]
+            obj_size_x, obj_size_y = obj["size_x"], obj["size_y"]
+            
+            # ロボットの中心から物体の中心までの距離
+            dx = obj_x - x
+            dy = obj_y - y
+            dist_to_obj = math.sqrt(dx*dx + dy*dy)
+            
+            # 前後方向（x軸）での安全距離：0.35m（ロボットの前後幅）
+            # 左右方向（y軸）での安全距離：0.15m
+            # つまり、物体の中心からロボットの中心までの距離が、0.35m未満なら前後方向にぶつかる
+            # 0.15m未満なら左右方向にぶつかる
+            if dist_to_obj < 0.35:
+                # 前後方向に近づいている → 前進を中止
+                # ただし、目標の物体が近い場合は、安全距離を確保する
+                # ここでは、目標の物体に近づく場合は安全距離を確保
+                # 他の物体に近づいている場合は、停止
+                # しかし、目標の物体に近づく場合にのみ、安全距離を確保
+                # 他の物体に近づいている場合は、停止
+                # そのため、目標の物体以外に近い場合は停止
+                if obj != closest_object:
+                    print(f"停止: 物体 {obj['name']} に近づいてしまいました")
+                    stop(1.0)
+                    break
+        
+        # 終了条件を確認（ステップ数）
+        if step >= max_steps - 1:
+            break
+    
+    # 到達後、1秒間停止
+    stop(1.0)
+```

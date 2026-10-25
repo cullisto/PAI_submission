@@ -1,0 +1,10 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
+[t=  5.10s] print: 壁の前到達: (1.509, 0.325)
+[t= 22.90s] print: 赤い箱までの距離: 2.57m
+[t=  2.40s] move_sideways(0.4)
+[t=  5.10s] move_forward(1.6)
+[t=  5.10s] get_position() -> (1.509, 0.325)
+[t= 22.90s] move_forward(2.491)
+[t= 22.90s] get_position() -> (1.525, 0.693)
+[t= 30.80s] move_forward(0.5)
+[t= 31.80s] stop(1.0)

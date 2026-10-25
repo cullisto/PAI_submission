@@ -1,0 +1,8 @@
+{
+  "run_id": "20261023-142931_T10",
+  "task_id": "T10",
+  "instruction": "壁にぶつからないように避けて、赤い箱まで行って。",
+  "scene": "obstacle",
+  "api_level": "low",
+  "model": "claude.ai"
+}

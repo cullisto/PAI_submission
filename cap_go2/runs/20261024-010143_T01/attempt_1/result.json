@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "目標点 (2.0, 0.0) までの最終距離 0.08 m（基準 < 0.4 m）",
+  "error": "",
+  "final_state": {
+    "x": 1.9169847965240479,
+    "y": 0.007176160346716642,
+    "yaw_deg": -2.565835594548306
+  },
+  "sim_time_s": 5.2,
+  "stall_time_s": 0.04,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  4.20s] move_forward(2.0)",
+    "[t=  5.20s] stop(1.0)",
+    "[t=  5.20s] get_position() -> (1.92, 0.007)"
+  ],
+  "log_tail": [
+    "[t=  5.20s] print: 開始位置: (-0.004, -0.001)",
+    "[t=  5.20s] print: 現在位置: (1.92, 0.007)",
+    "[t=  5.20s] print: 移動距離: 1.924016631944745"
+  ]
+}

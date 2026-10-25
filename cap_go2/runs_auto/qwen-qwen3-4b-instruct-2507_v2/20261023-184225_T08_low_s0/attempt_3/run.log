@@ -1,0 +1,9 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] print: 目標点: (2.5, 1.0)
+[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_yaw() -> 0.8
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_yaw() -> 0.8
+[t=  6.00s] stop(5.0)

@@ -1,0 +1,10 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] print: 目標の中間地点: (2.5, 1.0)
+[t=  5.40s] print: 到着: True
+[t=  5.40s] print: 現在位置: (2.44, 0.96) 中間地点までの距離: 0.07
+[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  5.40s] move_to(2.5, 1.0, tolerance=0.1, timeout=30.0) -> True
+[t=  5.40s] get_position() -> (2.442, 0.96)
+[t=  5.40s] distance_to(2.5, 1.0) -> 0.07
+[t=  5.90s] stop(0.5)

@@ -1,0 +1,18 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  5.90s] print: 目標 (1.00, -1.90) 到着: True 現在位置 (0.92, -1.77)
+[t= 12.20s] print: 目標 (4.20, -1.90) 到着: True 現在位置 (4.07, -1.91)
+[t= 16.90s] print: 目標 (4.20, -0.60) 到着: True 現在位置 (4.21, -0.68)
+[t= 17.70s] print: 赤い箱までの距離: 0.68 m
+[t=  1.00s] get_object_position('red_box') -> (4.2, 0.0)
+[t=  2.70s] face(1.0, -1.9)
+[t=  5.90s] move_to(1.0, -1.9, tolerance=0.2, timeout=40.0) -> True
+[t=  5.90s] get_position() -> (0.918, -1.775)
+[t=  7.50s] face(4.2, -1.9)
+[t= 12.20s] move_to(4.2, -1.9, tolerance=0.2, timeout=40.0) -> True
+[t= 12.20s] get_position() -> (4.069, -1.912)
+[t= 14.30s] face(4.2, -0.6)
+[t= 16.90s] move_to(4.2, -0.6, tolerance=0.1, timeout=25.0) -> True
+[t= 16.90s] get_position() -> (4.207, -0.676)
+[t= 17.20s] face(4.2, 0.0)
+[t= 17.70s] stop(0.5)
+[t= 17.70s] distance_to(4.2, 0.0) -> 0.681

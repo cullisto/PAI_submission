@@ -1,0 +1,9 @@
+{
+  "prompt_tokens": 4924,
+  "completion_tokens": 1314,
+  "dtype": "float16",
+  "peak_gpu_memory_gb": 9.33,
+  "seconds": 228.0,
+  "seed": 3,
+  "is_truncated": false
+}

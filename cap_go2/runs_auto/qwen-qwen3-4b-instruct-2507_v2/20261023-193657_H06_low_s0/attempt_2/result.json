@@ -1,0 +1,16 @@
+{
+  "success": false,
+  "failure_type": "構文エラー",
+  "detail": "SyntaxError: expected an indented block after 'else' statement on line 40（44 行目）",
+  "error": "SyntaxError: expected an indented block after 'else' statement on line 40（44 行目）",
+  "final_state": {
+    "x": -0.006257703527808189,
+    "y": -0.003035923233255744,
+    "yaw_deg": -0.25585032757682935
+  },
+  "sim_time_s": 1.0,
+  "stall_time_s": 0.0,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [],
+  "log_tail": []
+}

@@ -1,0 +1,51 @@
+実行記録: 20261023-162535_T03_high_s0_attempt1 / 試行 1
+指示    : 赤い箱のところまで行って。
+---- 生成コード ----
+# 赤い箱の位置を取得
+red_box_x, red_box_y = get_object_position("red_box")
+# ロボットが現在の位置から赤い箱の中心に向かって移動する
+reached = move_to(red_box_x, red_box_y, tolerance=0.3)
+print("赤い箱まで到達:", reached)
+if reached:
+    stop(1.0)
+
+--------------------
+[38;5;226m[Genesis] [13:50:27] [WARNING] Viewer option 'n_rendered_envs' is deprecated and will be removed in a future release. Please use 'rendered_envs_idx' instead.[0m
+[38;5;226m[Genesis] [13:50:38] [WARNING] Neutral robot position (qpos0) exceeds joint limits.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [13:50:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+Actor MLP: Sequential(
+  (0): Linear(in_features=45, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=12, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=45, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t= 31.40s] print: 赤い箱まで到達: False
+====================
+結果: 失敗（停滞（物体に押し付け））
+詳細: 移動の指令を出しているのにほとんど動けなかった時間が合計 25.1 秒あった（基準 3 秒以下）。箱や壁にぶつかったまま前進し続けた可能性がある
+記録: C:\matsuo-ai\PAI-1\last_submission\movie_build\replay\20261023-162535_T03_high_s0_attempt1\attempt_1
+→ 最大試行回数 1 回に達しました。

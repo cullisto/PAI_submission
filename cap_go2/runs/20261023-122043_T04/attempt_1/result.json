@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "青い箱に寄った: はい、緑の箱までの最終距離 0.61 m",
+  "error": "",
+  "final_state": {
+    "x": 0.6345817446708679,
+    "y": -1.9058513641357422,
+    "yaw_deg": -100.39565285322848
+  },
+  "sim_time_s": 16.5,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  2.40s] face(2.0, 2.0)",
+    "[t=  6.00s] move_to(1.6461818746693029, 1.6467115425215946, tolerance=0.15, timeout=40.0) -> True",
+    "[t=  6.40s] face(2.0, 2.0)",
+    "[t=  6.40s] get_position() -> (1.571, 1.547)",
+    "[t=  6.40s] distance_to(2.0, 2.0) -> 0.624",
+    "[t=  6.90s] stop(0.5)",
+    "[t=  6.90s] get_object_position('green_box') -> (0.5, -2.5)",
+    "[t=  6.90s] get_position() -> (1.572, 1.546)",
+    "[t= 10.10s] face(0.5, -2.5)",
+    "[t= 15.50s] move_to(0.6280579115881779, -2.016676949360291, tolerance=0.15, timeout=40.0) -> True",
+    "[t= 16.00s] face(0.5, -2.5)",
+    "[t= 16.00s] get_position() -> (0.635, -1.906)",
+    "[t= 16.00s] distance_to(0.5, -2.5) -> 0.609",
+    "[t= 16.50s] stop(0.5)"
+  ],
+  "log_tail": [
+    "[t=  6.40s] print: blue_box 到着: True 位置: (1.57, 1.55) 箱までの距離: 0.62 m",
+    "[t= 16.00s] print: green_box 到着: True 位置: (0.64, -1.91) 箱までの距離: 0.61 m"
+  ]
+}

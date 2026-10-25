@@ -1,0 +1,2 @@
+﻿timestamp,run_id,task_id,category,scene,instruction,api_level,model,attempt,success,failure_type,detail,sim_time_s,code_lines,video
+2026-10-25 13:52:04,20261023-162535_T03_high_s0_attempt2,T03,物体への移動,basic,赤い箱のところまで行って。,high,Qwen/Qwen3-4B-Instruct-2507,1,1,,red_box までの最終距離 0.49 m（基準 < 0.7 m）,6.3,33,..\movie_build\replay\20261023-162535_T03_high_s0_attempt2\attempt_1\video.mp4

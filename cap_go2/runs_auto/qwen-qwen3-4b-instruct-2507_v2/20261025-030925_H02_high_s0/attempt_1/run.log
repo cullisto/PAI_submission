@@ -1,0 +1,21 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  5.00s] print: red_box に到着: True
+[t= 19.10s] print: blue_box に到着: True
+[t= 28.00s] print: green_box に到着: True
+[t= 35.90s] print: yellow_box に到着: True
+[t= 41.40s] print: スタート地点に戻り完了: True
+[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱', 'x': 3.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'blue_box', 'description': '青い箱', 'x': 2.0, 'y': 2.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'green_box', 'description': '緑の箱', 'x': 0.5, 'y': -2.5, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'yellow_box', 'description': '黄色い箱', 'x': -2.0, 'y': 1.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}]
+[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  1.00s] get_object_position('green_box') -> (0.5, -2.5)
+[t=  1.00s] get_object_position('yellow_box') -> (-2.0, 1.0)
+[t=  5.00s] move_to(2.65, 0.0, tolerance=0.15) -> True
+[t=  6.00s] stop(1.0)
+[t= 19.10s] move_to(1.7525126265847084, 1.7525126265847084, tolerance=0.15) -> True
+[t= 20.10s] stop(1.0)
+[t= 28.00s] move_to(0.4313593527016356, -2.156796763508178, tolerance=0.15) -> True
+[t= 29.00s] stop(1.0)
+[t= 35.90s] move_to(-1.6869504831500295, 0.8434752415750147, tolerance=0.15) -> True
+[t= 36.90s] stop(1.0)
+[t= 41.40s] move_to(0.0, 0.0, tolerance=0.3) -> True
+[t= 42.40s] stop(1.0)

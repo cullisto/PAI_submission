@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "真裏からのずれ 3 deg（基準 < 45）、青い箱までの距離 0.84 m（基準 < 1.0）、箱の方向と向きの差 6 deg（基準 < 25）",
+  "error": "",
+  "final_state": {
+    "x": 2.621929168701172,
+    "y": 2.5640475749969482,
+    "yaw_deg": -144.1479756730414
+  },
+  "sim_time_s": 12.0,
+  "stall_time_s": 0.1,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  5.30s] move_to(2.565261531965449, 1.4338909994708846, tolerance=0.2, timeout=25.0) -> True",
+    "[t=  6.80s] move_to(2.799999775561542, 1.999400749231789, tolerance=0.2, timeout=25.0) -> True",
+    "[t=  8.90s] move_to(2.5661090005291154, 2.5652615319654486, tolerance=0.1, timeout=25.0) -> True",
+    "[t= 11.00s] face(2.0, 2.0)",
+    "[t= 12.00s] stop(1.0)",
+    "[t= 12.00s] get_position() -> (2.621, 2.562)",
+    "[t= 12.00s] get_yaw() -> -143.4",
+    "[t= 12.00s] distance_to(2.0, 2.0) -> 0.837"
+  ],
+  "log_tail": [
+    "[t=  5.30s] print: 経由点 0 (2.57, 1.43) 到着: True",
+    "[t=  6.80s] print: 経由点 1 (2.80, 2.00) 到着: True",
+    "[t=  8.90s] print: 経由点 2 (2.57, 2.57) 到着: True",
+    "[t= 12.00s] print: 最終位置: (2.62, 2.56), 向き: -143.4 deg, 箱までの距離: 0.84 m"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "failure_type": "停滞（物体に押し付け）",
+  "detail": "移動の指令を出しているのにほとんど動けなかった時間が合計 34.2 秒あった（基準 3 秒以下）。箱や壁にぶつかったまま前進し続けた可能性がある",
+  "error": "",
+  "final_state": {
+    "x": 1.5049742460250854,
+    "y": -1.2231929302215576,
+    "yaw_deg": 5.433009834535537
+  },
+  "sim_time_s": 51.1,
+  "stall_time_s": 34.18,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  4.60s] move_sideways(-1.325)",
+    "[t= 20.00s] move_forward(2.0)",
+    "[t= 20.80s] face(4.0, -1.0)",
+    "[t= 51.10s] move_to(4.0, -1.0, tolerance=0.3) -> False"
+  ],
+  "log_tail": [
+    "[t= 51.10s] print: 赤い箱到着: False"
+  ]
+}

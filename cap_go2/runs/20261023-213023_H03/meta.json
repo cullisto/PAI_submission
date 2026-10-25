@@ -1,0 +1,8 @@
+{
+  "run_id": "20261023-213023_H03",
+  "task_id": "H03",
+  "instruction": "2枚の壁の隙間を通り抜けて、向こう側の赤い箱まで行って。",
+  "scene": "gap",
+  "api_level": "low",
+  "model": "claude.ai"
+}

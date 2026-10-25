@@ -1,0 +1,7 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t= 49.80s] print: 赤い箱到着: False
+[t= 16.40s] move_forward(2.0)
+[t= 18.40s] move_sideways(0.625)
+[t= 19.50s] face(4.0, -1.0)
+[t= 19.50s] get_position() -> (1.493, 0.552)
+[t= 49.80s] move_to(4.0, -1.0, tolerance=0.3) -> False

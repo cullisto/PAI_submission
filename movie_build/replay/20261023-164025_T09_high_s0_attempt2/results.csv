@@ -1,0 +1,2 @@
+﻿timestamp,run_id,task_id,category,scene,instruction,api_level,model,attempt,success,failure_type,detail,sim_time_s,code_lines,video
+2026-10-25 13:54:28,20261023-164025_T09_high_s0_attempt2,T09,軌跡生成,basic,左回りに円を描くように一周して、元の場所付近に戻って。,high,Qwen/Qwen3-4B-Instruct-2507,1,1,,始点までの距離 0.22 m（基準 < 0.6）、左回りの累積回転 328 deg（基準 > 300）、始点から最も離れた距離 6.51 m（基準 > 0.5）,86.9,33,..\movie_build\replay\20261023-164025_T09_high_s0_attempt2\attempt_1\video.mp4

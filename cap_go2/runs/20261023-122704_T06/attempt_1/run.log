@@ -1,0 +1,16 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] print: red_box までの距離: 3.0
+[t=  1.00s] print: blue_box までの距離: 2.83
+[t=  1.00s] print: green_box までの距離: 2.55
+[t=  1.00s] print: yellow_box までの距離: 2.23
+[t=  1.00s] print: 一番近い箱: yellow_box 距離: 2.23
+[t=  7.10s] print: 到着: True
+[t=  8.10s] print: 最終位置: (-1.437, 0.738)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱', 'x': 3.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'blue_box', 'description': '青い箱', 'x': 2.0, 'y': 2.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'green_box', 'description': '緑の箱', 'x': 0.5, 'y': -2.5, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'yellow_box', 'description': '黄色い箱', 'x': -2.0, 'y': 1.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}]
+[t=  4.20s] face(-2.0, 1.0)
+[t=  4.20s] get_position() -> (0.033, -0.037)
+[t=  7.10s] move_to(-1.5545973467838547, 0.7728074021715974, tolerance=0.15, timeout=30.0) -> True
+[t=  7.60s] face(-2.0, 1.0)
+[t=  8.10s] stop(0.5)
+[t=  8.10s] get_position() -> (-1.437, 0.738)

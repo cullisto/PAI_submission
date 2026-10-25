@@ -1,0 +1,9 @@
+{
+  "run_id": "20261024-023139_H02",
+  "task_id": "H02",
+  "instruction": "すべての箱に1回ずつ寄ってから、スタート地点に戻って。なるべく短い経路で回って。",
+  "scene": "basic",
+  "api_level": "high",
+  "model": "claude.ai",
+  "prompt_version": "v2"
+}

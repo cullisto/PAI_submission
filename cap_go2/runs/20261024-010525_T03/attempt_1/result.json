@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "red_box までの最終距離 0.66 m（基準 < 0.7 m）",
+  "error": "",
+  "final_state": {
+    "x": 2.3358993530273438,
+    "y": -0.02366631291806698,
+    "yaw_deg": 2.5586394649922397
+  },
+  "sim_time_s": 6.0,
+  "stall_time_s": 0.06,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)",
+    "[t=  1.30s] face(3.0, 0.0)",
+    "[t=  1.30s] get_position() -> (-0.006, -0.002)",
+    "[t=  5.10s] move_to(2.450000121734756, -0.00036593471607800695, tolerance=0.15, timeout=30.0) -> True",
+    "[t=  5.50s] face(3.0, 0.0)",
+    "[t=  6.00s] stop(0.5)",
+    "[t=  6.00s] get_position() -> (2.337, -0.023)",
+    "[t=  6.00s] get_yaw() -> 3.2",
+    "[t=  6.00s] distance_to(3.0, 0.0) -> 0.663"
+  ],
+  "log_tail": [
+    "[t=  5.10s] print: 到着: True",
+    "[t=  6.00s] print: 現在位置: (2.337, -0.023) 向き: 3.2 箱までの距離: 0.663"
+  ]
+}

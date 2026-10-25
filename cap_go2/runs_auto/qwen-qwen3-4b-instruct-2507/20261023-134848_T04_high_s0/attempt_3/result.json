@@ -1,0 +1,22 @@
+{
+  "success": false,
+  "failure_type": "実行時エラー",
+  "detail": "NameError: name 'time' is not defined",
+  "error": "  生成コードの 33 行目: time.sleep(1.0)\nNameError: name 'time' is not defined",
+  "final_state": {
+    "x": 0.3289005160331726,
+    "y": 0.25107303261756897,
+    "yaw_deg": 41.28228433075423
+  },
+  "sim_time_s": 3.7,
+  "stall_time_s": 0.06,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  2.40s] turn_to(44.9570818211259)",
+    "[t=  2.40s] get_position() -> (0.009, -0.032)",
+    "[t=  3.70s] move_forward(0.5)"
+  ],
+  "log_tail": []
+}

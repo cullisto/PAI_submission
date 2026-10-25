@@ -1,0 +1,5 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  4.80s] move_forward(2.4819634531540125)
+[t=  5.30s] stop(0.5)

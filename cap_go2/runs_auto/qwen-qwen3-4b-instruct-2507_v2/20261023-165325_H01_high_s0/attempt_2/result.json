@@ -1,0 +1,24 @@
+{
+  "success": false,
+  "failure_type": "タスク未達成",
+  "detail": "真裏からのずれ 154 deg（基準 < 45）、青い箱までの距離 0.52 m（基準 < 1.0）、箱の方向と向きの差 2 deg（基準 < 25）",
+  "error": "",
+  "final_state": {
+    "x": 1.5091856718063354,
+    "y": 1.827105164527893,
+    "yaw_deg": 21.558230081458323
+  },
+  "sim_time_s": 8.2,
+  "stall_time_s": 0.06,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  2.40s] face(2.0, 2.0)",
+    "[t=  6.00s] move_to(1.65, 2.0, tolerance=0.3, timeout=10.0) -> True",
+    "[t=  7.20s] face(2.0, 2.0)",
+    "[t=  8.20s] stop(1.0)"
+  ],
+  "log_tail": [
+    "[t=  6.00s] print: 安全な位置に到達: True"
+  ]
+}

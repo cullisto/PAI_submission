@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "red_box までの最終距離 0.64 m（基準 < 0.7 m）、障害物との最小距離 0.68 m（基準 > 0.25 m、これ以下は衝突）",
+  "error": "",
+  "final_state": {
+    "x": 3.3602540493011475,
+    "y": -0.0304642952978611,
+    "yaw_deg": 5.7288575632838885
+  },
+  "sim_time_s": 16.3,
+  "stall_time_s": 0.12,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱（ゴール）', 'x': 4.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'wall', 'description': '灰色の壁（障害物）', 'x': 2.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 1.6, 'is_obstacle': True}]",
+    "[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱（ゴール）', 'x': 4.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'wall', 'description': '灰色の壁（障害物）', 'x': 2.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 1.6, 'is_obstacle': True}]",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  4.20s] move_to(0.95, -1.4, tolerance=0.15, timeout=25.0) -> True",
+    "[t=  4.20s] get_position() -> (0.89, -1.307)",
+    "[t=  7.90s] move_to(3.0, -1.4, tolerance=0.15, timeout=25.0) -> True",
+    "[t=  7.90s] get_position() -> (2.887, -1.425)",
+    "[t= 11.20s] move_to(3.0, 0.0, tolerance=0.15, timeout=25.0) -> True",
+    "[t= 11.20s] get_position() -> (3.037, -0.094)",
+    "[t= 13.50s] face(4.0, 0.0)",
+    "[t= 14.90s] move_to(3.45, 0.0, tolerance=0.1, timeout=15.0) -> True",
+    "[t= 14.90s] get_position() -> (3.378, -0.04)",
+    "[t= 15.80s] face(4.0, 0.0)",
+    "[t= 16.30s] stop(0.5)",
+    "[t= 16.30s] get_position() -> (3.359, -0.031)",
+    "[t= 16.30s] distance_to(4.0, 0.0) -> 0.641"
+  ],
+  "log_tail": [
+    "[t=  1.00s] print: 回り込む側: 右  通過する y = -1.4",
+    "[t=  4.20s] print: 経由点 (0.95, -1.40) -> 現在 (0.89, -1.31) 到着=True",
+    "[t=  7.90s] print: 経由点 (3.00, -1.40) -> 現在 (2.89, -1.43) 到着=True",
+    "[t= 11.20s] print: 経由点 (3.00, 0.00) -> 現在 (3.04, -0.09) 到着=True",
+    "[t= 14.90s] print: 経由点 (3.45, 0.00) -> 現在 (3.38, -0.04) 到着=True",
+    "[t= 16.30s] print: 最終位置 (3.36, -0.03), 箱までの距離 0.64 m, 到着=True"
+  ]
+}

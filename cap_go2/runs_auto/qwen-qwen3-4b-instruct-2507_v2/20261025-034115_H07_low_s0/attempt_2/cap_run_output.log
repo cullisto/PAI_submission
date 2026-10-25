@@ -1,0 +1,348 @@
+実行記録: 20261025-034115_H07_low_s0 / 試行 2
+指示    : 向きを変えずに（その場での旋回もせずに）、前後の移動と横歩きだけで青い箱の手前まで行って。
+---- 生成コード ----
+# 青い箱の中心位置を取得
+blue_box_x, blue_box_y = get_object_position("blue_box")
+
+# ロボットの現在位置と向きを取得
+x, y = get_position()
+current_yaw = get_yaw()
+
+# 目標点（青い箱の中心）までの距離を計算
+target_distance = math.sqrt((blue_box_x - x)**2 + (blue_box_y - y)**2)
+
+# 安全距離：ロボットの前後方向に0.35m、左右に0.15mの距離を確保
+safe_distance = 0.35  # 前後方向にロボットの中心が箱に近づかないように
+
+# 移動のための最大ステップ数（120秒以内に達成）
+max_steps = 600
+step_duration = 0.1
+
+# 前後方向に移動する速度を0.5 m/s、横歩きは0.3 m/sに設定
+for step in range(max_steps):
+    # 現在の位置を取得
+    x, y = get_position()
+    current_yaw = get_yaw()
+    
+    # ロボットの向きに沿った前後方向の距離成分を計算
+    cos_yaw = math.cos(math.radians(current_yaw))
+    sin_yaw = math.sin(math.radians(current_yaw))
+    
+    # 目標点へのベクトル
+    dx = blue_box_x - x
+    dy = blue_box_y - y
+    dist = math.sqrt(dx*dx + dy*dy)
+    
+    # 安全距離に達していない場合、移動
+    if dist > safe_distance:
+        # 前後方向への移動量（ロボットの向きに沿った距離）
+        forward_component = dx * cos_yaw + dy * sin_yaw
+        
+        # 前後方向に移動（前が正）
+        if forward_component > 0:
+            # 前進
+            walk(0.5, 0.0, 0.0, duration=step_duration)
+        else:
+            # 後退（必要に応じて）
+            walk(-0.3, 0.0, 0.0, duration=step_duration)
+    else:
+        # 安全距離内に達した → 横歩きで調整（左右方向にずれを補正）
+        # 左右方向のずれを計算（ロボットの向きに垂直な方向）
+        lateral_component = -dx * sin_yaw + dy * cos_yaw
+        
+        # 横歩きの速度を距離に応じて調整（距離が小さいほど遅く）
+        lateral_speed = 0.3 * (1 - dist / safe_distance)
+        if abs(lateral_component) > 0.1:
+            # 左右にずれている場合
+            if lateral_component > 0:
+                walk(0.0, 0.3, 0.0, duration=step_duration)
+            else:
+                walk(0.0, -0.3, 0.0, duration=step_duration)
+    
+    # 動作の確認（ログに残す）
+    if step % 10 == 0:
+        print(f"Step {step}: pos={x:.2f},{y:.2f}, yaw={current_yaw:.1f} deg, dist={dist:.2f}m")
+
+# 到達後、5秒間静止
+stop(5.0)
+
+--------------------
+[38;5;226m[Genesis] [03:45:40] [WARNING] Viewer option 'n_rendered_envs' is deprecated and will be removed in a future release. Please use 'rendered_envs_idx' instead.[0m
+[38;5;226m[Genesis] [03:45:45] [WARNING] Neutral robot position (qpos0) exceeds joint limits.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+[38;5;226m[Genesis] [03:45:52] [WARNING] This property is deprecated and will be removed in future release. Please use 'dofs_idx_local' instead.[0m
+Actor MLP: Sequential(
+  (0): Linear(in_features=45, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=12, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=45, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.10s] print: Step 0: pos=-0.00,-0.00, yaw=0.8 deg, dist=2.83m
+[t=  2.10s] print: Step 10: pos=0.41,-0.01, yaw=0.8 deg, dist=2.56m
+[t=  3.10s] print: Step 20: pos=0.91,-0.01, yaw=1.3 deg, dist=2.29m
+[t=  4.10s] print: Step 30: pos=1.41,-0.01, yaw=1.5 deg, dist=2.09m
+[t=  5.10s] print: Step 40: pos=1.91,-0.01, yaw=2.2 deg, dist=2.01m
+[t=  6.10s] print: Step 50: pos=2.07,-0.03, yaw=2.7 deg, dist=2.03m
+[t=  7.10s] print: Step 60: pos=2.11,-0.06, yaw=2.9 deg, dist=2.06m
+[t=  8.10s] print: Step 70: pos=2.11,-0.05, yaw=3.1 deg, dist=2.05m
+[t=  9.10s] print: Step 80: pos=2.15,-0.01, yaw=4.6 deg, dist=2.02m
+[t= 10.10s] print: Step 90: pos=2.21,-0.04, yaw=4.8 deg, dist=2.05m
+[t= 11.10s] print: Step 100: pos=2.18,-0.03, yaw=4.5 deg, dist=2.04m
+[t= 12.10s] print: Step 110: pos=2.15,-0.07, yaw=4.9 deg, dist=2.07m
+[t= 13.10s] print: Step 120: pos=2.20,-0.10, yaw=5.6 deg, dist=2.10m
+[t= 14.10s] print: Step 130: pos=2.25,-0.09, yaw=5.2 deg, dist=2.10m
+[t= 15.10s] print: Step 140: pos=2.21,-0.11, yaw=5.3 deg, dist=2.12m
+[t= 16.10s] print: Step 150: pos=2.27,-0.13, yaw=5.8 deg, dist=2.15m
+[t= 17.10s] print: Step 160: pos=2.24,-0.15, yaw=6.8 deg, dist=2.17m
+[t= 18.10s] print: Step 170: pos=2.19,-0.17, yaw=6.3 deg, dist=2.18m
+[t= 19.10s] print: Step 180: pos=2.21,-0.20, yaw=6.9 deg, dist=2.21m
+[t= 20.10s] print: Step 190: pos=2.28,-0.20, yaw=6.2 deg, dist=2.21m
+[t= 21.10s] print: Step 200: pos=2.34,-0.20, yaw=7.2 deg, dist=2.23m
+[t= 22.10s] print: Step 210: pos=2.20,-0.24, yaw=5.6 deg, dist=2.25m
+[t= 23.10s] print: Step 220: pos=2.23,-0.23, yaw=6.3 deg, dist=2.25m
+[t= 24.10s] print: Step 230: pos=2.23,-0.24, yaw=5.8 deg, dist=2.25m
+[t= 25.10s] print: Step 240: pos=2.20,-0.25, yaw=5.4 deg, dist=2.26m
+[t= 26.10s] print: Step 250: pos=2.18,-0.28, yaw=4.7 deg, dist=2.29m
+[t= 27.10s] print: Step 260: pos=2.25,-0.29, yaw=5.2 deg, dist=2.31m
+[t= 28.10s] print: Step 270: pos=2.18,-0.32, yaw=5.1 deg, dist=2.32m
+[t= 29.10s] print: Step 280: pos=2.20,-0.29, yaw=3.5 deg, dist=2.29m
+[t= 30.10s] print: Step 290: pos=2.14,-0.33, yaw=3.5 deg, dist=2.33m
+[t= 31.10s] print: Step 300: pos=2.11,-0.34, yaw=1.1 deg, dist=2.34m
+[t= 32.10s] print: Step 310: pos=2.04,-0.35, yaw=-0.1 deg, dist=2.35m
+[t= 33.10s] print: Step 320: pos=2.00,-0.34, yaw=0.4 deg, dist=2.34m
+[t= 34.10s] print: Step 330: pos=1.96,-0.33, yaw=-1.7 deg, dist=2.33m
+[t= 35.10s] print: Step 340: pos=1.98,-0.34, yaw=-2.3 deg, dist=2.34m
+[t= 36.10s] print: Step 350: pos=2.03,-0.33, yaw=-1.2 deg, dist=2.33m
+[t= 37.10s] print: Step 360: pos=1.97,-0.39, yaw=-1.8 deg, dist=2.39m
+[t= 38.10s] print: Step 370: pos=1.89,-0.41, yaw=-2.7 deg, dist=2.42m
+[t= 39.10s] print: Step 380: pos=1.86,-0.41, yaw=-2.8 deg, dist=2.41m
+[t= 40.10s] print: Step 390: pos=1.91,-0.44, yaw=-3.0 deg, dist=2.44m
+[t= 41.10s] print: Step 400: pos=1.92,-0.44, yaw=-2.1 deg, dist=2.44m
+[t= 42.10s] print: Step 410: pos=1.86,-0.45, yaw=-4.0 deg, dist=2.46m
+[t= 43.10s] print: Step 420: pos=1.88,-0.45, yaw=-3.4 deg, dist=2.45m
+[t= 44.10s] print: Step 430: pos=1.85,-0.44, yaw=-2.4 deg, dist=2.45m
+[t= 45.10s] print: Step 440: pos=1.93,-0.42, yaw=-2.9 deg, dist=2.42m
+[t= 46.10s] print: Step 450: pos=1.84,-0.40, yaw=-3.6 deg, dist=2.40m
+[t= 47.10s] print: Step 460: pos=1.85,-0.38, yaw=-3.8 deg, dist=2.39m
+[t= 48.10s] print: Step 470: pos=1.86,-0.41, yaw=-4.4 deg, dist=2.41m
+[t= 49.10s] print: Step 480: pos=1.87,-0.41, yaw=-3.4 deg, dist=2.42m
+[t= 50.10s] print: Step 490: pos=1.92,-0.42, yaw=-2.5 deg, dist=2.42m
+[t= 51.10s] print: Step 500: pos=1.90,-0.45, yaw=-2.8 deg, dist=2.46m
+[t= 52.10s] print: Step 510: pos=1.99,-0.47, yaw=-1.8 deg, dist=2.47m
+[t= 53.10s] print: Step 520: pos=1.90,-0.45, yaw=-2.7 deg, dist=2.45m
+[t= 54.10s] print: Step 530: pos=1.83,-0.46, yaw=-3.7 deg, dist=2.46m
+[t= 55.10s] print: Step 540: pos=1.83,-0.41, yaw=-4.5 deg, dist=2.42m
+[t= 56.10s] print: Step 550: pos=1.78,-0.40, yaw=-4.8 deg, dist=2.41m
+[t= 57.10s] print: Step 560: pos=1.87,-0.44, yaw=-4.2 deg, dist=2.44m
+[t= 58.10s] print: Step 570: pos=1.75,-0.45, yaw=-4.7 deg, dist=2.46m
+[t= 59.10s] print: Step 580: pos=1.76,-0.45, yaw=-5.8 deg, dist=2.46m
+[t= 60.10s] print: Step 590: pos=1.71,-0.42, yaw=-6.3 deg, dist=2.43m
+====================
+結果: 失敗（停滞（物体に押し付け））
+詳細: 移動の指令を出しているのにほとんど動けなかった時間が合計 3.3 秒あった（基準 3 秒以下）。箱や壁にぶつかったまま前進し続けた可能性がある
+記録: /content/drive/MyDrive/matsuo_ai/pai1/cap_go2/runs_auto/qwen-qwen3-4b-instruct-2507_v2/20261025-034115_H07_low_s0/attempt_2
+→ 修正依頼のプロンプトを作りました: /content/drive/MyDrive/matsuo_ai/pai1/cap_go2/runs_auto/qwen-qwen3-4b-instruct-2507_v2/20261025-034115_H07_low_s0/attempt_3/prompt.md
+
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 35430 (\N{CJK UNIFIED IDEOGRAPH-8A66}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 21521 (\N{CJK UNIFIED IDEOGRAPH-5411}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12365 (\N{HIRAGANA LETTER KI}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12434 (\N{HIRAGANA LETTER WO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 22793 (\N{CJK UNIFIED IDEOGRAPH-5909}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12360 (\N{HIRAGANA LETTER E}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12378 (\N{HIRAGANA LETTER ZU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12395 (\N{HIRAGANA LETTER NI}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 65288 (\N{FULLWIDTH LEFT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12381 (\N{HIRAGANA LETTER SO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12398 (\N{HIRAGANA LETTER NO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 22580 (\N{CJK UNIFIED IDEOGRAPH-5834}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12391 (\N{HIRAGANA LETTER DE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 26059 (\N{CJK UNIFIED IDEOGRAPH-65CB}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 22238 (\N{CJK UNIFIED IDEOGRAPH-56DE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12418 (\N{HIRAGANA LETTER MO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12379 (\N{HIRAGANA LETTER SE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 65289 (\N{FULLWIDTH RIGHT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12289 (\N{IDEOGRAPHIC COMMA}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 21069 (\N{CJK UNIFIED IDEOGRAPH-524D}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 24460 (\N{CJK UNIFIED IDEOGRAPH-5F8C}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 31227 (\N{CJK UNIFIED IDEOGRAPH-79FB}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 21205 (\N{CJK UNIFIED IDEOGRAPH-52D5}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12392 (\N{HIRAGANA LETTER TO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 27178 (\N{CJK UNIFIED IDEOGRAPH-6A2A}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 27497 (\N{CJK UNIFIED IDEOGRAPH-6B69}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12384 (\N{HIRAGANA LETTER DA}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12369 (\N{HIRAGANA LETTER KE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 38738 (\N{CJK UNIFIED IDEOGRAPH-9752}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12356 (\N{HIRAGANA LETTER I}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 31665 (\N{CJK UNIFIED IDEOGRAPH-7BB1}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 25163 (\N{CJK UNIFIED IDEOGRAPH-624B}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12414 (\N{HIRAGANA LETTER MA}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12387 (\N{HIRAGANA LETTER SMALL TU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12390 (\N{HIRAGANA LETTER TE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 12290 (\N{IDEOGRAPHIC FULL STOP}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 22833 (\N{CJK UNIFIED IDEOGRAPH-5931}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 25943 (\N{CJK UNIFIED IDEOGRAPH-6557}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 38283 (\N{CJK UNIFIED IDEOGRAPH-958B}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 22987 (\N{CJK UNIFIED IDEOGRAPH-59CB}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 32066 (\N{CJK UNIFIED IDEOGRAPH-7D42}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 20102 (\N{CJK UNIFIED IDEOGRAPH-4E86}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 26178 (\N{CJK UNIFIED IDEOGRAPH-6642}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:207: UserWarning: Glyph 21051 (\N{CJK UNIFIED IDEOGRAPH-523B}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 35430 (\N{CJK UNIFIED IDEOGRAPH-8A66}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 21521 (\N{CJK UNIFIED IDEOGRAPH-5411}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12365 (\N{HIRAGANA LETTER KI}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12434 (\N{HIRAGANA LETTER WO}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 22793 (\N{CJK UNIFIED IDEOGRAPH-5909}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12360 (\N{HIRAGANA LETTER E}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12378 (\N{HIRAGANA LETTER ZU}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12395 (\N{HIRAGANA LETTER NI}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 65288 (\N{FULLWIDTH LEFT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12381 (\N{HIRAGANA LETTER SO}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12398 (\N{HIRAGANA LETTER NO}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 22580 (\N{CJK UNIFIED IDEOGRAPH-5834}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12391 (\N{HIRAGANA LETTER DE}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 26059 (\N{CJK UNIFIED IDEOGRAPH-65CB}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 22238 (\N{CJK UNIFIED IDEOGRAPH-56DE}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12418 (\N{HIRAGANA LETTER MO}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12379 (\N{HIRAGANA LETTER SE}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 65289 (\N{FULLWIDTH RIGHT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12289 (\N{IDEOGRAPHIC COMMA}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 21069 (\N{CJK UNIFIED IDEOGRAPH-524D}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 24460 (\N{CJK UNIFIED IDEOGRAPH-5F8C}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 31227 (\N{CJK UNIFIED IDEOGRAPH-79FB}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 21205 (\N{CJK UNIFIED IDEOGRAPH-52D5}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12392 (\N{HIRAGANA LETTER TO}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 27178 (\N{CJK UNIFIED IDEOGRAPH-6A2A}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 27497 (\N{CJK UNIFIED IDEOGRAPH-6B69}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12384 (\N{HIRAGANA LETTER DA}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12369 (\N{HIRAGANA LETTER KE}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 38738 (\N{CJK UNIFIED IDEOGRAPH-9752}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12356 (\N{HIRAGANA LETTER I}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 31665 (\N{CJK UNIFIED IDEOGRAPH-7BB1}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 25163 (\N{CJK UNIFIED IDEOGRAPH-624B}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12414 (\N{HIRAGANA LETTER MA}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12387 (\N{HIRAGANA LETTER SMALL TU}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12390 (\N{HIRAGANA LETTER TE}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 12290 (\N{IDEOGRAPHIC FULL STOP}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 22833 (\N{CJK UNIFIED IDEOGRAPH-5931}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 25943 (\N{CJK UNIFIED IDEOGRAPH-6557}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 38283 (\N{CJK UNIFIED IDEOGRAPH-958B}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 22987 (\N{CJK UNIFIED IDEOGRAPH-59CB}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 32066 (\N{CJK UNIFIED IDEOGRAPH-7D42}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 20102 (\N{CJK UNIFIED IDEOGRAPH-4E86}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 26178 (\N{CJK UNIFIED IDEOGRAPH-6642}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)
+/content/drive/MyDrive/matsuo_ai/pai1/cap_go2/cap_common.py:208: UserWarning: Glyph 21051 (\N{CJK UNIFIED IDEOGRAPH-523B}) missing from font(s) DejaVu Sans.
+  fig.savefig(path, dpi=150)

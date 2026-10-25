@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "目標点 (2.0, 0.0) までの最終距離 0.08 m（基準 < 0.4 m）",
+  "error": "",
+  "final_state": {
+    "x": 1.9169855117797852,
+    "y": 0.007175375707447529,
+    "yaw_deg": -2.565900642016693
+  },
+  "sim_time_s": 5.2,
+  "stall_time_s": 0.04,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  4.20s] move_forward(2.0)",
+    "[t=  5.20s] stop(1.0)"
+  ],
+  "log_tail": []
+}

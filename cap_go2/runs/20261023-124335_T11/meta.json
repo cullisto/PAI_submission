@@ -1,0 +1,8 @@
+{
+  "run_id": "20261023-124335_T11",
+  "task_id": "T11",
+  "instruction": "赤い箱まで行って。",
+  "scene": "obstacle",
+  "api_level": "high",
+  "model": "claude.ai"
+}

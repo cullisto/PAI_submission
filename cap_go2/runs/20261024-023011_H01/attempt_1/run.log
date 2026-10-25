@@ -1,0 +1,19 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] print: 経由点: [(1.36408077653887, 2.6368726255952546), (2.0006741571142372, 2.899999747506734)] 最終目標: (2.4953453754629757, 2.4946038404697677)
+[t=  5.60s] print: 経由点到着: True (1.316, 2.462)
+[t=  7.20s] print: 経由点到着: True (1.838, 2.852)
+[t=  9.20s] print: 裏側に到着: True (2.431, 2.598)
+[t= 12.10s] print: 最終位置: (2.419, 2.616) 向き: -121.9
+[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱', 'x': 3.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'blue_box', 'description': '青い箱', 'x': 2.0, 'y': 2.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'green_box', 'description': '緑の箱', 'x': 0.5, 'y': -2.5, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'yellow_box', 'description': '黄色い箱', 'x': -2.0, 'y': 1.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}]
+[t=  5.60s] move_to(1.36408077653887, 2.6368726255952546, tolerance=0.25, timeout=30.0) -> True
+[t=  5.60s] get_position() -> (1.316, 2.462)
+[t=  7.20s] move_to(2.0006741571142372, 2.899999747506734, tolerance=0.25, timeout=30.0) -> True
+[t=  7.20s] get_position() -> (1.838, 2.852)
+[t=  9.20s] move_to(2.4953453754629757, 2.4946038404697677, tolerance=0.15, timeout=20.0) -> True
+[t=  9.20s] get_position() -> (2.431, 2.598)
+[t= 11.10s] face(2.0, 2.0)
+[t= 12.10s] stop(1.0)
+[t= 12.10s] get_position() -> (2.419, 2.616)
+[t= 12.10s] get_yaw() -> -121.9

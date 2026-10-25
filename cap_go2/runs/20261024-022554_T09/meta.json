@@ -1,0 +1,9 @@
+{
+  "run_id": "20261024-022554_T09",
+  "task_id": "T09",
+  "instruction": "左回りに円を描くように一周して、元の場所付近に戻って。",
+  "scene": "basic",
+  "api_level": "high",
+  "model": "claude.ai",
+  "prompt_version": "v2"
+}

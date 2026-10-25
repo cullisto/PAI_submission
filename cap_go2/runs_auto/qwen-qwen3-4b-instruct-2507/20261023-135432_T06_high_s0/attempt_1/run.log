@@ -1,0 +1,6 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cuda:0
+[t= 31.40s] print: 到着: False
+[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱', 'x': 3.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'blue_box', 'description': '青い箱', 'x': 2.0, 'y': 2.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'green_box', 'description': '緑の箱', 'x': 0.5, 'y': -2.5, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'yellow_box', 'description': '黄色い箱', 'x': -2.0, 'y': 1.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}]
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t= 31.40s] move_to(-2.0, 1.0, tolerance=0.3) -> False
+[t= 31.90s] stop(0.5)

@@ -1,0 +1,16 @@
+# 提出物に含めないもの
+doc/
+WORKLOG.md
+
+# 外部のコード（README の「環境構築」の手順で入手する）
+genesis-world/
+rsl_rl/
+
+# 生成物・キャッシュ
+__pycache__/
+*.pyc
+.venv/
+movie_build/out/
+# 途中で止まって評価に使わなかった実行記録と、その整理前の控え
+cap_go2/runs_auto/*/_incomplete/
+*_before_cleanup.*

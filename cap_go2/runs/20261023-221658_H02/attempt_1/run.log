@@ -1,0 +1,36 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t=  1.00s] print: 箱: [('red_box', 3.0, 0.0), ('blue_box', 2.0, 2.0), ('green_box', 0.5, -2.5), ('yellow_box', -2.0, 1.0)]
+[t=  1.00s] print: 訪問順: ['green_box', 'red_box', 'blue_box', 'yellow_box'] 総距離(中心間): 14.68 m
+[t=  5.00s] print: green_box 到着: True 位置: (0.376, -1.901) 箱までの距離: 0.61 m
+[t= 11.00s] print: red_box 到着: True 位置: (2.533, -0.38) 箱までの距離: 0.60 m
+[t= 14.80s] print: blue_box 到着: True 位置: (2.169, 1.411) 箱までの距離: 0.61 m
+[t= 21.10s] print: yellow_box 到着: True 位置: (-1.399, 1.088) 箱までの距離: 0.61 m
+[t= 26.20s] print: スタート地点に帰着: True 位置: (-0.077, 0.011)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_yaw() -> 0.8
+[t=  1.00s] get_objects() -> [{'name': 'red_box', 'description': '赤い箱', 'x': 3.0, 'y': 0.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'blue_box', 'description': '青い箱', 'x': 2.0, 'y': 2.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'green_box', 'description': '緑の箱', 'x': 0.5, 'y': -2.5, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}, {'name': 'yellow_box', 'description': '黄色い箱', 'x': -2.0, 'y': 1.0, 'size_x': 0.3, 'size_y': 0.3, 'is_obstacle': False}]
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  5.00s] move_to(0.40114999302644067, -2.009868715422768, tolerance=0.15, timeout=10.12329241836588) -> True
+[t=  5.00s] get_position() -> (0.376, -1.901)
+[t=  5.00s] distance_to(0.5, -2.5) -> 0.612
+[t=  5.30s] stop(0.3)
+[t=  5.30s] get_position() -> (0.377, -1.893)
+[t= 11.00s] move_to(2.594558512196092, -0.2926041694292025, tolerance=0.15, timeout=11.836863576195658) -> True
+[t= 11.00s] get_position() -> (2.533, -0.38)
+[t= 11.00s] distance_to(3.0, 0.0) -> 0.602
+[t= 11.30s] stop(0.3)
+[t= 11.30s] get_position() -> (2.527, -0.383)
+[t= 14.80s] move_to(2.107966254626466, 1.5117958543171381, tolerance=0.15, timeout=9.851443476752038) -> True
+[t= 14.80s] get_position() -> (2.169, 1.411)
+[t= 14.80s] distance_to(2.0, 2.0) -> 0.613
+[t= 15.10s] stop(0.3)
+[t= 15.10s] get_position() -> (2.166, 1.405)
+[t= 21.10s] move_to(-1.5023460995431952, 1.0483796998763817, tolerance=0.15, timeout=14.214099638764914) -> True
+[t= 21.10s] get_position() -> (-1.399, 1.088)
+[t= 21.10s] distance_to(-2.0, 1.0) -> 0.607
+[t= 21.40s] stop(0.3)
+[t= 21.40s] distance_to(-0.004, -0.001) -> 1.763
+[t= 26.20s] move_to(-0.004, -0.001, tolerance=0.1, timeout=9.407499999999999) -> True
+[t= 26.20s] get_position() -> (-0.077, 0.011)
+[t= 27.20s] turn_to(0.8)
+[t= 27.70s] stop(0.5)

@@ -1,0 +1,8 @@
+{
+  "run_id": "20261023-140703_T02",
+  "task_id": "T02",
+  "instruction": "その場で左に90度回転して。",
+  "scene": "basic",
+  "api_level": "low",
+  "model": "claude.ai"
+}

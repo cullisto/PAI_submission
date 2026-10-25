@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "目標点 (2.5, 1.0) までの最終距離 0.26 m（基準 < 0.4 m）",
+  "error": "",
+  "final_state": {
+    "x": 2.2805211544036865,
+    "y": 0.8639856576919556,
+    "yaw_deg": 22.637447101002742
+  },
+  "sim_time_s": 5.7,
+  "stall_time_s": 0.04,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)",
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  4.70s] move_to(2.5, 1.0, tolerance=0.3) -> True",
+    "[t=  5.70s] stop(1.0)"
+  ],
+  "log_tail": [
+    "[t=  4.70s] print: 中間地点に到着: True"
+  ]
+}

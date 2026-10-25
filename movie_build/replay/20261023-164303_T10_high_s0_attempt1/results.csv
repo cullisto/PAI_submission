@@ -1,0 +1,2 @@
+﻿timestamp,run_id,task_id,category,scene,instruction,api_level,model,attempt,success,failure_type,detail,sim_time_s,code_lines,video
+2026-10-25 13:47:54,20261023-164303_T10_high_s0_attempt1,T10,障害物回避,obstacle,壁にぶつからないように避けて、赤い箱まで行って。,high,Qwen/Qwen3-4B-Instruct-2507,1,0,停滞（物体に押し付け）,移動の指令を出しているのにほとんど動けなかった時間が合計 35.5 秒あった（基準 3 秒以下）。箱や壁にぶつかったまま前進し続けた可能性がある,44.9,45,..\movie_build\replay\20261023-164303_T10_high_s0_attempt1\attempt_1\video.mp4

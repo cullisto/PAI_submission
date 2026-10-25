@@ -1,0 +1,8 @@
+[t=  1.00s] 方策: go2-omni (model_500.pt), デバイス: cpu
+[t= 32.30s] print: 赤い箱到着: False
+[t=  1.00s] get_object_position('purple_box') -> (2.0, 0.3)
+[t=  1.00s] get_object_position('red_box') -> (4.5, 0.0)
+[t=  1.00s] get_position() -> (-0.004, -0.001)
+[t=  1.00s] get_yaw() -> 0.8
+[t=  1.90s] move_to(0.5166389336861248, 0.07719975999976225, tolerance=0.3) -> True
+[t= 32.30s] move_to(4.5, 0.0, tolerance=0.3) -> False

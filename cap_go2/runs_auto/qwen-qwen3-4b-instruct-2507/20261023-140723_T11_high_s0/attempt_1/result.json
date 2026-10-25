@@ -1,0 +1,21 @@
+{
+  "success": false,
+  "failure_type": "実行時エラー",
+  "detail": "NameError: name 'wall_size_x' is not defined",
+  "error": "  生成コードの 16 行目: wall_left = wall_x - wall_size_x / 2\nNameError: name 'wall_size_x' is not defined",
+  "final_state": {
+    "x": -0.006258002948015928,
+    "y": -0.0030370692256838083,
+    "yaw_deg": -0.25488795562756317
+  },
+  "sim_time_s": 1.0,
+  "stall_time_s": 0.0,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('red_box') -> (4.0, 0.0)",
+    "[t=  1.00s] get_object_position('wall') -> (2.0, 0.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  1.00s] get_yaw() -> 0.8"
+  ],
+  "log_tail": []
+}

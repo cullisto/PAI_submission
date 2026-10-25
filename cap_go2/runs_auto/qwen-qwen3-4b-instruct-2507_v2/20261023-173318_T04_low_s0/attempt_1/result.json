@@ -1,0 +1,26 @@
+{
+  "success": false,
+  "failure_type": "タスク未達成",
+  "detail": "青い箱に寄った: いいえ、緑の箱までの最終距離 2.55 m",
+  "error": "",
+  "final_state": {
+    "x": -0.007853028364479542,
+    "y": -0.004046990070492029,
+    "yaw_deg": -0.9672188095541912
+  },
+  "sim_time_s": 2.0,
+  "stall_time_s": 0.0,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('blue_box') -> (2.0, 2.0)",
+    "[t=  1.00s] get_object_position('green_box') -> (0.5, -2.5)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  1.00s] get_yaw() -> 0.8",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  1.00s] get_yaw() -> 0.8",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  1.00s] get_yaw() -> 0.8",
+    "[t=  2.00s] stop(1.0)"
+  ],
+  "log_tail": []
+}

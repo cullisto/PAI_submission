@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "failure_type": "",
+  "detail": "red_box までの最終距離 0.49 m（基準 < 0.7 m）",
+  "error": "",
+  "final_state": {
+    "x": 2.508970260620117,
+    "y": -0.031773149967193604,
+    "yaw_deg": 1.7526772586982042
+  },
+  "sim_time_s": 6.3,
+  "stall_time_s": 0.06,
+  "policy": "go2-omni/model_500.pt",
+  "api_calls": [
+    "[t=  1.00s] get_object_position('red_box') -> (3.0, 0.0)",
+    "[t=  1.00s] get_position() -> (-0.004, -0.001)",
+    "[t=  1.00s] get_yaw() -> 0.8",
+    "[t=  1.30s] face(3.0, 0.0)",
+    "[t=  5.30s] move_to(2.6500000193926945, -0.00011651131178671951, tolerance=0.15) -> True",
+    "[t=  6.30s] stop(1.0)"
+  ],
+  "log_tail": [
+    "[t=  5.30s] print: 安全距離を確保して目標へ到達: True"
+  ]
+}

@@ -125,13 +125,6 @@ cd cap_go2
 & "..\$py" cap_summary.py results_v2.csv results_qwen-qwen3-4b-instruct-2507_v2.csv
 ```
 
-### 6. デモ動画の作成
-
-```powershell
-& $py movie_build\replay_qwen.py   # Qwen の試行を、記録した応答から手元で実行し直して録画する
-& $py movie_build\make_movie.py    # movie_build\out\ に動画を書き出す
-```
-
 ## 参考
 
 - J. Liang et al., "Code as Policies: Language Model Programs for Embodied Control," ICRA 2023.
